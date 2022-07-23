@@ -1,11 +1,10 @@
 const rehypePrettyCode = require('rehype-pretty-code');
 const fs = require('fs');
-const visit = require('unist-util-visit');
 
 const rehypePrettyCodeOptions = {
   theme: JSON.parse(
     fs.readFileSync(
-      require.resolve('./assets/floating-ui-theme.json'),
+      require.resolve('./node_modules/shiki/themes/solarized-dark.json'),
       'utf-8'
     )
   ),
@@ -31,7 +30,7 @@ const rehypePrettyCodeOptions = {
 };
 
 module.exports = {
-  swcMinify: false,
+  swcMinify: true,
   experimental: {esmExternals: true},
   pageExtensions: ['md', 'mdx', 'tsx', 'ts', 'jsx', 'js'],
   webpack(config, options) {
