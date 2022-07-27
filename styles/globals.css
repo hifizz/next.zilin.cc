@@ -19,7 +19,17 @@ a {
 @tailwind components;
 @tailwind utilities;
 
-pre > code {
-  font-size: 14px;
-  font-family: Menlo, 'SFMono-Regular', Consolas, Monaco, monospace;
+div[data-rehype-pretty-code-fragment] {
+  margin: 0 -20px;
+  border-radius: 0;
+}
+
+div[data-rehype-pretty-code-fragment] > pre {
+  border-radius: 0;
+  font-size: 12px;
+}
+
+.article {
+  background: url(../public/R.jpeg) no-repeat top center;
+  background-size: 100% 100%;
 }

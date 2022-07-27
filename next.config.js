@@ -4,7 +4,8 @@ const fs = require('fs');
 const rehypePrettyCodeOptions = {
   theme: JSON.parse(
     fs.readFileSync(
-      require.resolve('./node_modules/shiki/themes/solarized-dark.json'),
+      require.resolve('./node_modules/shiki/themes/one-dark-pro.json'),
+      // require.resolve('./assets/ayu/ayu-light.json'),
       'utf-8'
     )
   ),
