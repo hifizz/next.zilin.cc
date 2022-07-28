@@ -25,6 +25,10 @@ const Home: NextPage = () => {
         </p>
 
         <div className={styles.grid}>
+          <a href="/posts/next-with-mdx" className={styles.card}>
+            <h2>Test Mdx with next &rarr;</h2>
+            <p>Use Mdx for page content in Next.js</p>
+          </a>
           <a href="https://nextjs.org/docs" className={styles.card}>
             <h2>Documentation &rarr;</h2>
             <p>Find in-depth information about Next.js features and API.</p>
