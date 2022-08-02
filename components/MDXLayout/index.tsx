@@ -2,14 +2,30 @@ import React from 'react';
 import {MDXProvider} from '@mdx-js/react';
 
 const components = {
-  code(props) {
-    return (
-      <div className="code">
-        <code {...props} />
-      </div>
-    );
+  pre(props) {
+    console.log('props', props);
+    if (props.children && props.children?.type === 'code') {
+      return (
+        <div className="max-w-2xl mx-auto my-4" >
+          <div className="w-full h-11 rounded-t-lg bg-gray-200 flex justify-start items-center space-x-1.5 px-3">
+            <span className="w-3 h-3 rounded-full bg-red-400"></span>
+            <span className="w-3 h-3 rounded-full bg-yellow-400"></span>
+            <span className="w-3 h-3 rounded-full bg-green-400"></span>
+          </div>
+          <div className="bg-gray-100 border-t-0 w-full max-h-96 overflow-overlay rounded-b-lg">
+            <pre {...props} style={{...props.style, margin: '0', borderRadius: '0', backgroundColor: 'transparent', fontSize: '12px'}} />
+          </div>
+        </div>
+      );
+    } else {
+      return <pre {...props} />;
+    }
+
+    // <div className="code">
+
+    // </div>
   },
-}
+};
 
 export const MDXLayout: React.FC<{}> = ({children}) => {
   return (

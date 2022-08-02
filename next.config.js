@@ -1,5 +1,19 @@
 const rehypePrettyCode = require('rehype-pretty-code');
+const visit = require('unist-util-visit');
 const fs = require('fs');
+
+const replaceCodeBlocks = () => async (tree) => {
+  // node type: https://github.com/remarkjs/remark#syntax-tree
+  visit(tree, 'pre', (node) => {
+    if(node && node.type === 'pre') {
+      if(node.children[0]?.type === 'code') {
+        node['data-codeblock-container'] = true;
+      }
+    }
+    return node;
+  });
+};
+
 
 const rehypePrettyCodeOptions = {
   theme: JSON.parse(
@@ -54,7 +68,7 @@ module.exports = {
           /** @type {import('@mdx-js/loader').Options} */
           options: {
             providerImportSource: '@mdx-js/react',
-            remarkPlugins: [],
+            remarkPlugins: [replaceCodeBlocks],
             rehypePlugins: [
               [rehypePrettyCode, rehypePrettyCodeOptions],
             ],

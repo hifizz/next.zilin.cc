@@ -19,7 +19,13 @@ a {
 @tailwind components;
 @tailwind utilities;
 
-div[data-rehype-pretty-code-fragment] {
+@layer utilities {
+  .overflow-overlay {
+    overflow: overlay;
+  }
+}
+
+/* div[data-rehype-pretty-code-fragment] {
   margin: 0 -20px;
   border-radius: 0;
 }
@@ -27,9 +33,25 @@ div[data-rehype-pretty-code-fragment] {
 div[data-rehype-pretty-code-fragment] > pre {
   border-radius: 0;
   font-size: 12px;
-}
+} */
 
 .article {
   background: url(../public/R.jpeg) no-repeat top center;
   background-size: 100% 100%;
+}
+
+code {
+  counter-reset: line;
+}
+
+code > .line::before {
+  counter-increment: line;
+  content: counter(line);
+  /* Other styling */
+  display: inline-block;
+  width: 1rem;
+  margin-right: 1rem;
+  text-align: right;
+  color: gray;
+  /* border-right: 1px solid gray; */
 }

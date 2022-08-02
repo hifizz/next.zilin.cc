@@ -43,6 +43,7 @@
     "react-feather": "^2.0.10",
     "rehype-pretty-code": "^0.2.4",
     "rehype-shiki": "^0.0.9",
+    "remark-codesandbox": "^0.10.1",
     "shiki": "^0.10.1"
   }
 }
